@@ -1,7 +1,9 @@
+import ContentSection from "@/sections/ContentSection";
+
 export default function Home() {
   return (
     <main className="">
-      <h1>Popular Movies</h1>
+      <ContentSection />
     </main>
   );
 }
