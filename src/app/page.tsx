@@ -1,9 +1,7 @@
 export default function Home() {
   return (
     <main className="">
-      <span className="">
-        Nextjs
-      </span>
+      <h1>Popular Movies</h1>
     </main>
   );
 }
