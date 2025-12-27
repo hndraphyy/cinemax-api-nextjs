@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useState, useEffect } from "react";
 import { getPopularMovie } from "@/lib/tmdb";
@@ -24,14 +24,24 @@ export default function ContentSection() {
     fetchData();
   }, []);
 
-  if (loading) return <div>Loading...</div>;
-
   return (
-    <div>
+    <div className="pb-20">
       <Header title="Popular Movies" />
-      {movies.map((list) => (
-        <Card key={list.id} movie={list} />
-      ))}
+      <div className="mt-38">
+        {loading ? (
+          <div className="flex justify-center items-center">
+            <p className="text-white text-xl animate-pulse">
+              Loading Movies...
+            </p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
+            {movies.map((list) => (
+              <Card key={list.id} movie={list} />
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

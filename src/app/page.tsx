@@ -2,7 +2,7 @@ import ContentSection from "@/sections/ContentSection";
 
 export default function Home() {
   return (
-    <main className="max-w-6xl m-auto p-10">
+    <main className="max-w-7xl m-auto px-5 md:px-10">
       <ContentSection />
     </main>
   );
