@@ -1,5 +1,5 @@
 import { IoSearch } from "react-icons/io5";
-import { SearchProp } from "@/typs/input";
+import { SearchProp } from "@/types/input";
 
 export default function Input({ id, type, placeholder, onChange }: SearchProp) {
   return (
