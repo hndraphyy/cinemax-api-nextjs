@@ -10,6 +10,7 @@ export default function ContentSection() {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
+  const [debouncedSearch, setDebouncedSearch] = useState("");
 
   useEffect(() => {
     async function fetchData() {
@@ -25,8 +26,18 @@ export default function ContentSection() {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedSearch(search);
+    }, 500);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [search]);
+
   const filteredMovies = movies.filter((movie) =>
-    movie.title.toLowerCase().includes(search.toLowerCase())
+    movie.title.toLowerCase().includes(debouncedSearch.toLowerCase())
   );
 
   return (
