@@ -27,7 +27,7 @@ export default function ContentSection() {
   return (
     <div className="pb-20">
       <Header title="Popular Movies" />
-      <div className="mt-38">
+      <div className="mt-40 md:mt-30">
         {loading ? (
           <div className="flex justify-center items-center">
             <p className="text-white text-xl animate-pulse">
