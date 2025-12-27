@@ -12,7 +12,7 @@ export default function Input({ id, type, placeholder, onChange }: SearchProp) {
         id={id}
         onChange={onChange}
         placeholder={placeholder}
-        className="border border-gray-700 rounded-md outline-0 px-10 py-2 w-full bg-gray-900"
+        className="border border-gray-700 rounded-md outline-0 pl-10 pr-2 py-2 w-full bg-gray-900"
       />
     </div>
   );

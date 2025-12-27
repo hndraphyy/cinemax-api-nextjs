@@ -9,6 +9,7 @@ import Card from "@/components/Card";
 export default function ContentSection() {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [loading, setLoading] = useState(true);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     async function fetchData() {
@@ -24,9 +25,17 @@ export default function ContentSection() {
     fetchData();
   }, []);
 
+  const filteredMovies = movies.filter((movie) =>
+    movie.title.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
     <div className="pb-20">
-      <Header title="Popular Movies" />
+      <Header
+        title="Popular Movies"
+        onChange={(e) => setSearch(e.target.value)}
+        id=""
+      />
       <div className="mt-40 md:mt-30">
         {loading ? (
           <div className="flex justify-center items-center">
@@ -35,11 +44,19 @@ export default function ContentSection() {
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
-            {movies.map((list) => (
-              <Card key={list.id} movie={list} />
-            ))}
-          </div>
+          <>
+            {filteredMovies.length === 0 ? (
+              <div className="text-center text-zinc-500 py-20">
+                Film "{search}" Not Found.
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
+                {filteredMovies.map((list) => (
+                  <Card key={list.id} movie={list} />
+                ))}
+              </div>
+            )}
+          </>
         )}
       </div>
     </div>
